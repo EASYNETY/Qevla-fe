@@ -1,0 +1,9 @@
+.modal-width {
+    max-width: none !important;
+    max-width: 80%;
+}
+
+.custom-modal-style {
+    width: 897px;
+    height: 802px;
+}
