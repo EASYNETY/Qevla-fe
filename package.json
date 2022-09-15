@@ -3,6 +3,9 @@
   "version": "1.2.1",
   "description": "Backend solution for the qevla team to monitor and assign orders to drivers",
   "main": "index.js",
+  "engines": {
+    "node": "16.13.2"
+  },
   "keywords": [
     "react",
     "reactjs",
