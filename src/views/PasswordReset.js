@@ -17,24 +17,43 @@ import {
   Col,
 } from "reactstrap";
 
+  function getFormValues() {
+    const storedValues = localStorage.getItem("passReq");
+    if (!storedValues)
+      return {
+        token: "",
+        userId: "",
+
+      };
+    return JSON.parse(storedValues);
+  }
+
+
 const PasswordReset = () => {
-  const [email, setEmail] = useState("");
+  const [passReq, setPassReq] = React.useState(getFormValues);
   const [password, setPassword] = useState("");
 
   const navigate = useHistory();
 
-  const handleLogin = async (e) => {
+  React.useEffect(() => {
+    localStorage.getItem("passReq", JSON.stringify(passReq));
+  }, [passReq]);
+
+  console.log("PasswordResetRequest stored data", passReq);
+
+  const handlePassRequest = async (e) => {
     e.preventDefault();
     try {
-      const response = await AuthService.login(email, password).then(
-        () => {
-          navigate.push("/admin/index");
-          // window.location.reload();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      const response = await AuthService.passwordReset;
+(passReq.token, passReq.userId, password).then(
+  () => {
+    navigate.push("/auth/login");
+    // window.location.reload();
+  },
+  (error) => {
+    console.log(error);
+  }
+);
       console.log(response.data);
     } catch (err) {
       console.log(err);
@@ -59,8 +78,8 @@ const PasswordReset = () => {
             <div className="text-center text-muted mb-4">
               <small></small>
             </div>
-            <Form role="form" onSubmit={handleLogin}>
-              <FormGroup className="mb-3">
+            <Form role="form" onSubmit={handlePassRequest}>
+              {/* <FormGroup className="mb-3">
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
@@ -70,11 +89,11 @@ const PasswordReset = () => {
                   <Input
                     placeholder="Email address"
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>
-              </FormGroup>
+              </FormGroup> */}
               <FormGroup>
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
@@ -90,7 +109,7 @@ const PasswordReset = () => {
                   />
                 </InputGroup>
               </FormGroup>
-              <div className="custom-control custom-control-alternative custom-checkbox">
+              {/* <div className="custom-control custom-control-alternative custom-checkbox">
                 <input
                   className="custom-control-input"
                   id=" customCheckLogin"
@@ -102,7 +121,7 @@ const PasswordReset = () => {
                 >
                   <span className="text-muted">Remember me</span>
                 </label>
-              </div>
+              </div> */}
               {/* <div className="text-center">
                 <Button type="submit" className="my-4" color="primary">
                   Sign in

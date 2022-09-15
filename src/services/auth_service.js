@@ -35,7 +35,7 @@ const login = (email, password) => {
 
 const requestPasswordReset = (email) => {
   return axios
-    .post(endpoints.adminLogin, {
+    .post(endpoints.requestResetPassword, {
       email,
     })
     .then((response) => {
@@ -46,6 +46,21 @@ const requestPasswordReset = (email) => {
       return response.data;
     });
 };
+
+const passwordReset = (email) => {
+  return axios
+    .post(endpoints.passwordReset, {
+      email,
+    })
+    .then((response) => {
+      if (response.data) {
+        window.localStorage.setItem("passReq", JSON.stringify(response.data));
+      }
+      console.log(response.data);
+      return response.data;
+    });
+};
+
 
 const logout = () => {
   localStorage.removeItem("user");

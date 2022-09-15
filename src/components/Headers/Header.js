@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { isSuccessful } from "../../utils/tools";
 // import { useSelector, useDispatch } from "react-redux";
 import { fetchDrivers } from "services/onboarding-service";
+import Drivers from "views/Drivers";
 
 
 
@@ -21,11 +22,12 @@ useEffect(() => {
     const fullResponse = await fetch(endpoints.getDrivers);
     const responseJson = await fullResponse.json();
     // console.log("Created drivers>>>>>>>: from headers responses", responseJson);
-    setDrivers(responseJson.count);
+    setDrivers(responseJson);
   }
 
   fetchUsers();
 }, []);
+console.log("Drivers on dashboard", drivers)
   return (
     <>
       <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
@@ -45,7 +47,7 @@ useEffect(() => {
                           Total Drivers
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
-                          {drivers}
+                          {drivers.count}
                         </span>
                       </div>
                       <Col className="col-auto">
@@ -56,7 +58,7 @@ useEffect(() => {
                     </Row>
                     <p className="mt-3 mb-0 text-muted text-sm">
                       <span className="text-success mr-2">
-                        <i className="fa fa-arrow-up" /> 3.48%
+                        <i className="fa fa-arrow-up" /> %
                       </span>{" "}
                       <span className="text-nowrap">Since last month</span>
                     </p>
@@ -76,7 +78,7 @@ useEffect(() => {
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
                        
-                            {drivers}
+                            {drivers.count}
                         </span>
                       </div>
                       <Col className="col-auto">
@@ -87,14 +89,14 @@ useEffect(() => {
                     </Row>
                     <p className="mt-3 mb-0 text-muted text-sm">
                       <span className="text-danger mr-2">
-                        <i className="fas fa-arrow-down" /> 3.48%
+                        <i className="fas fa-arrow-down" /> %
                       </span>{" "}
                       <span className="text-nowrap">Since last week</span>
                     </p>
                   </CardBody>
                 </Card>
               </Col>
-              <Col lg="6" xl="3">
+              {/* <Col lg="6" xl="3">
                 <Card className="card-stats mb-4 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -121,8 +123,8 @@ useEffect(() => {
                     </p>
                   </CardBody>
                 </Card>
-              </Col>
-              <Col lg="6" xl="3">
+              </Col> */}
+              {/* <Col lg="6" xl="3">
                 <Card className="card-stats mb-4 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -149,7 +151,7 @@ useEffect(() => {
                     </p>
                   </CardBody>
                 </Card>
-              </Col>
+              </Col> */}
             </Row>
           </div>
         </Container>

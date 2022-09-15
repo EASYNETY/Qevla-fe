@@ -42,8 +42,7 @@ const Login = () => {
   };
 
   const handlePassChange = (e) => {
-    e.preventDefault();
-    navigate.push("/auth/request-reset-password");
+    window.open("localhost:3001/api/auth/forgot-password");
   }
 
   return (
@@ -127,8 +126,10 @@ const Login = () => {
           <Col xs="6">
             <a
               className="text-light"
-              href="/auth/request-reset-password"
-              onClick={() => handlePassChange()}
+              href="#qev"
+              // target="_blank"
+              // rel="noopener noreferrer"
+              onClick={handlePassChange}
             >
               <small>Forgot password?</small>
             </a>

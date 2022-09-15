@@ -30,7 +30,7 @@ const PasswordResetRequest = () => {
         email
       ).then(
         () => {
-          navigate.push("/admin/reset-password");
+          navigate.push("/auth/reset-password");
           // window.location.reload();
         },
         (error) => {

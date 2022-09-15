@@ -136,19 +136,20 @@ const Index = (props) => {
   return (
     <>
       <Header />
-      <Container className="mt--7" fluid>
+      
+      {/* <Container className="mt--7" fluid>
         <Row>
           <Col className="mb-5 mb-xl-0" xl="8">
             <Card className="bg-gradient-default shadow">
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
-                  <div className="col">
+                  {/* <div className="col">
                     <h6 className="text-uppercase text-light ls-1 mb-1">
                       Overview
                     </h6>
                     <h2 className="text-white mb-0">Sales value </h2>
-                  </div>
-                  <div className="col">
+                  </div> */}
+                  {/* <div className="col">
                     <Nav className="justify-content-end" pills>
                       <NavItem>
                         <NavLink
@@ -176,12 +177,12 @@ const Index = (props) => {
                         </NavLink>
                       </NavItem>
                     </Nav>
-                  </div>
-                </Row>
+                  </div> */}
+                {/* </Row>
               </CardHeader>
-              <CardBody>
+              <CardBody> */}
                 {/* Chart */}
-                <div className="chart">
+                {/* <div className="chart">
                   <Line
                     data={chartExample1[chartExample1Data]}
                     options={chartExample1.options}
@@ -193,19 +194,19 @@ const Index = (props) => {
           </Col>
           <Col xl="4">
             <Card className="shadow">
-              <CardHeader className="bg-transparent">
-                <Row className="align-items-center">
+              <CardHeader className="bg-transparent"> */}
+                {/* <Row className="align-items-center">
                   <div className="col">
                     <h6 className="text-uppercase text-muted ls-1 mb-1">
                       Performance
                     </h6>
                     <h2 className="mb-0">Total orders</h2>
                   </div>
-                </Row>
-              </CardHeader>
+                </Row> */}
+              {/* </CardHeader>
               <CardBody>
                 {/* Chart */}
-                <div className="chart">
+                {/* <div className="chart">
                   <Bar
                     data={chartExample2.data}
                     options={chartExample2.options}
@@ -401,7 +402,7 @@ const Index = (props) => {
             </Card>
           </Col>
         </Row>
-      </Container>
+      </Container>  */} 
     </>
   );
 };
