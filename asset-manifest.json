@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/qevla-admin-backend/static/css/main.99c4afaf.chunk.css",
+    "main.js": "/qevla-admin-backend/static/js/main.0616a5ec.chunk.js",
+    "main.js.map": "/qevla-admin-backend/static/js/main.0616a5ec.chunk.js.map",
+    "runtime-main.js": "/qevla-admin-backend/static/js/runtime-main.d2e69c82.js",
+    "runtime-main.js.map": "/qevla-admin-backend/static/js/runtime-main.d2e69c82.js.map",
+    "static/css/2.b5588c6b.chunk.css": "/qevla-admin-backend/static/css/2.b5588c6b.chunk.css",
+    "static/js/2.5d5d459f.chunk.js": "/qevla-admin-backend/static/js/2.5d5d459f.chunk.js",
+    "static/js/2.5d5d459f.chunk.js.map": "/qevla-admin-backend/static/js/2.5d5d459f.chunk.js.map",
+    "index.html": "/qevla-admin-backend/index.html",
+    "static/css/2.b5588c6b.chunk.css.map": "/qevla-admin-backend/static/css/2.b5588c6b.chunk.css.map",
+    "static/css/main.99c4afaf.chunk.css.map": "/qevla-admin-backend/static/css/main.99c4afaf.chunk.css.map",
+    "static/js/2.5d5d459f.chunk.js.LICENSE.txt": "/qevla-admin-backend/static/js/2.5d5d459f.chunk.js.LICENSE.txt",
+    "static/js/main.0616a5ec.chunk.js.LICENSE.txt": "/qevla-admin-backend/static/js/main.0616a5ec.chunk.js.LICENSE.txt",
+    "static/media/all.min.css": "/qevla-admin-backend/static/media/fa-solid-900.efbd5d20.eot",
+    "static/media/github.svg": "/qevla-admin-backend/static/media/github.6c955556.svg",
+    "static/media/google.svg": "/qevla-admin-backend/static/media/google.eae9aa93.svg",
+    "static/media/nucleo.css": "/qevla-admin-backend/static/media/nucleo-icons.d6a66724.ttf",
+    "static/media/qevla_logo.png": "/qevla-admin-backend/static/media/qevla_logo.0e390610.png",
+    "static/media/team-1-800x800.jpg": "/qevla-admin-backend/static/media/team-1-800x800.fa5a7ac2.jpg",
+    "static/media/team-4-800x800.jpg": "/qevla-admin-backend/static/media/team-4-800x800.99c612eb.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d2e69c82.js",
+    "static/css/2.b5588c6b.chunk.css",
+    "static/js/2.5d5d459f.chunk.js",
+    "static/css/main.99c4afaf.chunk.css",
+    "static/js/main.0616a5ec.chunk.js"
+  ]
+}
