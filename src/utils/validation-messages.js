@@ -1,0 +1,18 @@
+export const formValidationMessages: any = {
+  defaultMandateSignatoryCount: "Mandate signatory ",
+  signatoryCount: "Mandate signatory ",
+  defaultApprovalLevelCount: "Approval level ",
+  approvalLevelCount: "Approval level ",
+  taxId: "Tax identification number",
+  businessMobileNo: "Mobile number ",
+  email: "Email ",
+  corporateCode: "Corporate code  ",
+  officePhoneNumber: "Office phone number",
+  mobilePhoneNumber: "Mobile phone number",
+  phoneNumber: "Phone number",
+  mobileNumber: "Mobile number",
+  nokPhoneNumber: "Next of kin phone number",
+  beneficiaryAccountNumber: "Beneficiary account number",
+  reqistrationNumber: "Registration number ",
+  regNumber: "Business Registration number",
+};
