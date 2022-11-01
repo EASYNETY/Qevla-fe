@@ -3,6 +3,7 @@ import { GoogleMap, InfoWindow, Marker } from "@react-google-maps/api";
 // core components
 import Header from "components/Headers/Header.js";
 import { endpoints } from "../api-endpoints";
+// import "assets/css/style.css"
 
 function Map() {
   const [activeMarker, setActiveMarker] = useState(null);
@@ -34,28 +35,85 @@ function Map() {
 
   drivers.forEach((user) => {
     const driverInfo = (
-      <div>
-        {" Driver Information"}
-        <p>
-          Name:{" "}
-          <strong>
+      // <div>
+      <div
+        style={{
+          width: "41em",
+          height: "22em",
+          color: "#777",
+          backgroundColor: "#F0F0F0",
+          margin: "5% auto 0 auto",
+          borderRadius: "0.4em",
+          borderTopRightRadius: "0.37em",
+          borderBottomRightRadius: "0.37em",
+          boxShadow: "0 0 3px rgba(0, 0, 0, 0.15)",
+          transition: "box-shadow 200ms ease-in",
+        }}
+      >
+        {/* {" Driver Information"} */}
+
+        <div style={{ padding: "1.6em 2em 2em 14em" }}>
+          <h1
+            style={{
+              color: "#008080",
+              fontSize: "2.2em",
+              letterSpacing: "1px",
+            }}
+          >
             {user.first_name} {user.last_name}
-          </strong>
-        </p>
-        <p>
-          Phone Numeber: <strong>{user.number}</strong>
-        </p>
-        {"Towing Vehicle Info "}
-        <p>
-          Vehicle Name: <strong>{user.vehicle_details.v_manufacturer}</strong>
-        </p>
-        <p>
-          Vehicle License: <strong>{user.vehicle_details.v_license}</strong>
-        </p>
+          </h1>
+          <h2
+            style={{ color: "#00CED1", fontSize: "1.2em", marginTop: "0.2em" }}
+          >
+            {user.vehicle_details.v_manufacturer}
+          </h2>
+          <hr />
+          <p
+            style={{
+              fontFamily: "'Ubuntu Mono', monospace",
+              margin: "1em 0",
+              fontWeight: "700",
+              color: "black",
+            }}
+          >
+            {user.vehicle_details.address}
+          </p>
+          <p
+            style={{
+              fontFamily: "'Ubuntu Mono', monospace",
+              margin: "1em 0",
+              fontWeight: "700",
+              color: "black",
+            }}
+          >
+            {user.number}
+          </p>
+          <hr />
+          <p
+            style={{
+              fontFamily: "'Ubuntu Mono', monospace",
+              margin: "1em 0",
+              fontWeight: "700",
+              color: "black",
+            }}
+          >
+            {user.email}
+          </p>
+          <p
+            style={{
+              fontFamily: "'Ubuntu Mono', monospace",
+              margin: "1em 0",
+              fontWeight: "700",
+              color: "black",
+            }}
+          >
+            {user.website}
+          </p>
+        </div>
       </div>
     );
     marker.push({
-      id: user.address.lat,
+      id: user._id,
       name: driverInfo,
       position: user.address,
     });
