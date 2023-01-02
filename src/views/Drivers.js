@@ -130,7 +130,7 @@ const ModalContent = () => {
                           alt="..."
                           className="rounded-circle"
                           src={
-                            require("../assets/img/theme/team-4-800x800.jpg")
+                            require("../assets/img/brand/qevla_logo1.png")
                               .default
                           }
                         />
