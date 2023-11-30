@@ -16,18 +16,24 @@ const Header = () => {
 
   // const dispatch = useDispatch();
   const [drivers, setDrivers] = useState([]);
+  const [admins, setAdmins] = useState([]);
 
 useEffect(() => {
   async function fetchUsers() {
     const fullResponse = await fetch(endpoints.getDrivers);
     const responseJson = await fullResponse.json();
+    const drivers = responseJson.users.filter(user => user.isAdmin === false);
+    const admins = responseJson.users.filter(user => user.isAdmin === true);
+
     // console.log("Created drivers>>>>>>>: from headers responses", responseJson);
-    setDrivers(responseJson);
+    setDrivers(drivers);
+    setAdmins(admins);
   }
 
   fetchUsers();
 }, []);
-console.log("Drivers on dashboard", drivers)
+console.log("Drivers on dashboard", drivers.count)
+console.log("Admins on dashboard", admins.count)
   return (
     <>
       <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
@@ -47,7 +53,7 @@ console.log("Drivers on dashboard", drivers)
                           Total Drivers
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
-                          {drivers.count}
+                          {drivers.length}
                         </span>
                       </div>
                       <Col className="col-auto">
@@ -74,11 +80,11 @@ console.log("Drivers on dashboard", drivers)
                           tag="h5"
                           className="text-uppercase text-muted mb-0"
                         >
-                          Total Verified Drivers
+                          Total Admin
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
                        
-                            {drivers.count}
+                            {admins.length}
                         </span>
                       </div>
                       <Col className="col-auto">
@@ -96,7 +102,7 @@ console.log("Drivers on dashboard", drivers)
                   </CardBody>
                 </Card>
               </Col>
-              {/* <Col lg="6" xl="3">
+             <Col lg="6" xl="3">
                 <Card className="card-stats mb-4 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -105,9 +111,11 @@ console.log("Drivers on dashboard", drivers)
                           tag="h5"
                           className="text-uppercase text-muted mb-0"
                         >
-                          Total Tow Request
+                          Total Active Driver
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">924</span>
+                        <span className="h2 font-weight-bold mb-0">                            
+                        {drivers.length}
+                        </span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -123,8 +131,8 @@ console.log("Drivers on dashboard", drivers)
                     </p>
                   </CardBody>
                 </Card>
-              </Col> */}
-              {/* <Col lg="6" xl="3">
+              </Col> 
+               <Col lg="6" xl="3">
                 <Card className="card-stats mb-4 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -133,7 +141,7 @@ console.log("Drivers on dashboard", drivers)
                           tag="h5"
                           className="text-uppercase text-muted mb-0"
                         >
-                          Performance
+                          Payments
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">49,65%</span>
                       </div>
@@ -151,7 +159,7 @@ console.log("Drivers on dashboard", drivers)
                     </p>
                   </CardBody>
                 </Card>
-              </Col> */}
+              </Col> 
             </Row>
           </div>
         </Container>

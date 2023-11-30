@@ -3,7 +3,11 @@ p {
     font-family: Lato;
 }
 
-
+.cell-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 .container {
     width: 800px;
     height: 100px;

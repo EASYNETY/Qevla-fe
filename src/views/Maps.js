@@ -3,6 +3,8 @@ import { GoogleMap, InfoWindow, Marker } from "@react-google-maps/api";
 // core components
 import Header from "components/Headers/Header.js";
 import { endpoints } from "../api-endpoints";
+
+// const io = require('socket.io-client');
 // import "assets/css/style.css"
 
 function Map() {
@@ -24,7 +26,8 @@ function Map() {
     async function fetchUsers() {
       const fullResponse = await fetch(endpoints.getDrivers);
       const responseJson = await fullResponse.json();
-      setDrivers(responseJson.users);
+      const drivers = responseJson.users.filter(user => user.isAdmin === false);
+      setDrivers(drivers);
       console.log("Endpoint response>>>>>>>>:", responseJson.users);
       console.log("Endpoint called>>>>>>>>:", endpoints.getDrivers);
       setLatlng();
@@ -119,42 +122,11 @@ function Map() {
     });
   });
 
-  // markerAddress.forEach((address) => {
-  //     marker.push({
-  //       id: address.lat,
-  //       name: "Qevla Driver new one",
-  //       position: {lat : address.lat, lng: address.long}
-  //     });
-  //   });
   console.log(
     "Created drivers>>>>>>> from headers from map markers used",
     markerAddress
   );
 
-  // const markers = [
-  //   {
-  //     id: 1,
-  //     name: "Qevla Driver",
-  //     position: { lat: 6.45469, lng: 3.32042 },
-  //   },
-
-  //   {
-  //     id: 2,
-  //     name: "Denver, Colorado",
-  //     position: { lat: 39.739235, lng: -104.99025 },
-  //   },
-  //   // ,
-  //   // {
-  //   //   id: 3,
-  //   //   name: "Los Angeles, California",
-  //   //   position: { lat: 34.052235, lng: -118.243683 },
-  //   // },
-  //   // {
-  //   //   id: 4,
-  //   //   name: "New York, New York",
-  //   //   position: { lat: 40.712776, lng: -74.005974 },
-  //   // },
-  // ];
   const google = window.google;
 
   var qevLoc = new google.maps.LatLng(6.45084, 3.35011);
@@ -163,14 +135,9 @@ function Map() {
     bounds.extend(qevLoc);
     marker.forEach(({ position }) => bounds.extend(position));
     map.fitBounds(bounds);
-    // const bounds = new google.maps.LatLngBounds();
-    // marker.forEach(({ position }) => bounds.extend(position));
-    // map.fitBounds(bounds);
+
   };
-  // console.log("Created drivers>>>>>>> from headers from map marker", marker);
-  // let mylatLng = new google.maps.LatLng(6.45084, 3.35011);
-  // let lat = "6.484570";
-  // let lng = "6.484570";
+
   return (
     <>
       <Header />
@@ -180,7 +147,6 @@ function Map() {
         mapContainerStyle={{ height: "600px" }}
         options={{
           zoom: 10,
-          // center: { lat: "6.484570", long:"6.484570" },
           scrollwheel: false,
           zoomControl: true,
           styles: [

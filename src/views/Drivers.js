@@ -23,7 +23,9 @@ import { endpoints } from "../api-endpoints";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import "./modal.css"
 import userService from "services/user.service";
-import { param } from "jquery";
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+import axios from "axios";
+// import { param } from "jquery";
 
 const Drivers = () => {
   const [modalInfo, setModalInfo] = useState([]);
@@ -32,9 +34,9 @@ const Drivers = () => {
   const [state, setState] = useState();
   const [drivers, setDrivers] = useState([]);
   const driver = [];
-  const navigate = useHistory();
+  // const navigate = useHistory();
 
-  const { SearchBar } = Search;
+  // const { SearchBar } = Search;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -43,7 +45,8 @@ const Drivers = () => {
     async function fetchUsers() {
       const fullResponse = await fetch(endpoints.getDrivers);
       const responseJson = await fullResponse.json();
-      setDrivers(responseJson.users);
+      const drivers = responseJson.users.filter(user => user.isAdmin === false);
+      setDrivers(drivers);
     }
     fetchUsers();
   }, []);
@@ -60,9 +63,9 @@ const Drivers = () => {
 
   const rowEvents = {
     onClick: (e, row) => {
-      console.log("Row list test", row);
+      console.log("Row list test", row.id);
       setModalInfo(row);
-      toggleTrueFalse();
+      // toggleTrueFalse();
     },
   };
 
@@ -520,13 +523,80 @@ const ModalContent = () => {
   );
 };
 
+// Function to handle row deletion
+const handleDeleteRow = (id) => {
+  // Construct the request body
+  const requestBody = {
+    id: id 
+  };
+
+  fetch('http://54.210.50.74:3001/api/user/delete', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestBody)
+  })
+    .then(response => {
+      if (response.ok) {
+        const updatedDriver = driver.filter(driver => driver.id !== id);
+        setModalInfo(updatedDriver);
+        window.location.reload();
+      } else {
+        console.error('Failed to delete driver:', response.statusText);
+      }
+    })
+    .catch(error => {
+      console.error('Failed to delete driver:', error);
+    });
+};
+
+
   const columns = [
     { dataField: "first_name", text: "Driver First Name" },
     { dataField: "last_name", text: "Driver Last Name" },
-    { dataField: "email", text: "Driver Email" },
+    { dataField: "email", text: "Driver Email",  width: '150px',
+    classes: 'cell-overflow' },
     { dataField: "number", text: "Driver Phone" },
     { dataField: "vehicle_details.v_license", text: "License Number" },
+    // {
+    //   text: 'Actions',
+    //   formatter: (cell, row) => (
+    //     <button onClick={() => handleDeleteRow(row._id)}>Delete</button>
+    //   ),
+    // },
+   
+    {
+      text: "Actions",
+      formatter: (cellContent, row) => (
+        <DropdownButton title="Actions">
+          <Dropdown.Item onClick={() => handleShow(row)}>View</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleDeleteRow(row._id)}>Delete</Dropdown.Item>
+        </DropdownButton>
+      ),
+    },
   ];
+
+  function handleDelete(id) {
+    axios.delete("http://54.210.50.74:3001/api/user/delete", {
+      // method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete the row.");
+        }
+        // Implement the logic to update the table after the row is deleted
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  
+  
   return (
     <>
       <Header />

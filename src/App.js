@@ -7,7 +7,7 @@ import "./App.css";
 
 // import Login from "./components/Login";
 import Login from "views/Login";
-import Register from "./components/Register";
+import Register from "views/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
@@ -63,7 +63,7 @@ const App = () => {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
-            bezKoder
+            Qevla
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
@@ -136,6 +136,12 @@ const App = () => {
               component={Login}
               render={(props) => <AuthLayout {...props} />}
             />
+               {/* <Route
+              exact
+              path="/auth/register"
+              component={Register}
+              render={(props) => <AuthLayout {...props} />}
+            /> */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />

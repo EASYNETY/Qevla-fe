@@ -13,6 +13,7 @@ export const endpoints = {
   getAdmins: onboardingService.concat(`/get/all`),
   // getUserById: onboardingService.concat(`/
   updateDriverById: onboardingService.concat(`/update/:id`),
+  deleteDriverById: onboardingService.concat(`/delete`),
   // router.route("/status/:userId").get(getRegistrationStatusById);
   getDriverRegStatus: onboardingService.concat(`/status/:userId`),
 

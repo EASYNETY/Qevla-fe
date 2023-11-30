@@ -30,6 +30,19 @@ const updateUser = (formData) => {
       return response.data;
     });
 };
+const deleteUser = (id) => {
+  return axios
+    .delete(endpoints.deleteDriverById(), {
+      id
+    })
+    .then((response) => {
+      if (response) {
+       Toast("User deleted successfully");
+      }
+      // console.log(response);
+      return response.data;
+    });
+};
 
 const getUserBoard = () => {
   return axios.get(endpoints.getAdmins, { headers: authHeader() });
@@ -48,6 +61,7 @@ const  userService ={
   getModeratorBoard,
   getAdminBoard,
   updateUser,
+  deleteUser,
 };
 
 export default  userService

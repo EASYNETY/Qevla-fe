@@ -227,7 +227,7 @@ const Sidebar = (props) => {
 };
 
 Sidebar.defaultProps = {
-  routes: [{}],
+
 };
 
 Sidebar.propTypes = {
