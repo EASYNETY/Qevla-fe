@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   const handlePassChange = (e) => {
-    // window.open("http://54.210.50.74:3001/api/auth/forgot-password");
+    // window.open("http://54.226.34.22:3001/api/auth/forgot-password");
     window.open("http://localhost:3001/api/auth/forgot-password");
   }
 
