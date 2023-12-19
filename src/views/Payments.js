@@ -530,7 +530,7 @@ const handleDeleteRow = (id) => {
     id: id 
   };
 
-  fetch('http://54.226.34.22:3001/api/user/delete', {
+  fetch('http://qevla.com:3001/api/user/delete', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -573,7 +573,7 @@ const columns = [
 ];
 
   function handleDelete(id) {
-    axios.delete("http://54.226.34.22:3001/api/user/delete", {
+    axios.delete("http://qevla.com:3001/api/user/delete", {
       // method: "DELETE",
       headers: {
         "Content-Type": "application/json"

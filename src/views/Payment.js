@@ -103,7 +103,7 @@ const PaymentList = () => {
       id: id,
     };
 
-    fetch("http://54.226.34.22:3001/api/payment/delete", {
+    fetch("http://qevla.com:3001/api/payment/delete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

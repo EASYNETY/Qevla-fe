@@ -58,7 +58,7 @@ const SubAccounts = () => {
     try {
       // Replace with your API endpoint and authorization header
       const response = await fetch(
-        "http://54.226.34.22:3001/api/user/payment/get-subaccount",
+        "http://qevla.com:3001/api/user/payment/get-subaccount",
         {
           headers: {
             Authorization: "Bearer YOUR_ACCESS_TOKEN",
@@ -111,7 +111,7 @@ const SubAccounts = () => {
     // Send the POST request
     try {
       const response = await fetch(
-        "http://54.226.34.22:3001/api/user/create-subaccount",
+        "http://qevla.com:3001/api/user/create-subaccount",
         requestOptions
       );
 
@@ -177,7 +177,7 @@ const SubAccounts = () => {
       id: id
     };
 
-    fetch('http://54.226.34.22:3001/api/user/delete', {
+    fetch('http://qevla.com:3001/api/user/delete', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
